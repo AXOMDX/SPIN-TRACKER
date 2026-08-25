@@ -30,19 +30,21 @@ function generateMockResult(gameName) {
     crazyTime: () => ({
       roundId: `CT-${Date.now()}`,
       timestamp: new Date().toISOString(),
-      wheelResult: { segment: ['1','2','5','10','CoinFlip','CashHunt','Pachinko','CrazyTime'][Math.floor(Math.random() * 8)],
-        multiplier: Math.floor(Math.random() * 500) + 1 }
+      wheelResult: { 
+        segment: ['1', '2', '5', '10', 'CoinFlip', 'CashHunt', 'Pachinko', 'CrazyTime'][Math.floor(Math.random() * 8)],
+        multiplier: Math.floor(Math.random() * 500) + 1 
+      }
     }),
     bigBaller: () => ({
       roundId: `BB-${Date.now()}`,
       timestamp: new Date().toISOString(),
-      numbersDrawn: Array.from({length: 20}, () => Math.floor(Math.random() * 75) + 1),
+      numbersDrawn: Array.from({ length: 20 }, () => Math.floor(Math.random() * 75) + 1),
       bonusMultiplier: (Math.random() * 3 + 1).toFixed(1)
     }),
     iceFishing: () => ({
       roundId: `IF-${Date.now()}`,
       timestamp: new Date().toISOString(),
-      wheelSegment: ['10','20','30','40','50','Fish'][Math.floor(Math.random() * 6)],
+      wheelSegment: ['10', '20', '30', '40', '50', 'Fish'][Math.floor(Math.random() * 6)],
       fishMultiplier: (Math.random() * 5 + 1).toFixed(1)
     }),
     lightningRoulette: () => ({
@@ -50,30 +52,30 @@ function generateMockResult(gameName) {
       timestamp: new Date().toISOString(),
       winningNumber: Math.floor(Math.random() * 37),
       lightningMultiplier: [50, 100, 150, 200, 300, 500][Math.floor(Math.random() * 6)],
-      color: ['Red','Black','Green'][Math.floor(Math.random() * 3)]
+      color: ['Red', 'Black', 'Green'][Math.floor(Math.random() * 3)]
     }),
     dreamCatcher: () => ({
       roundId: `DC-${Date.now()}`,
       timestamp: new Date().toISOString(),
-      wheelSegment: ['1','2','5','10','20','40'][Math.floor(Math.random() * 6)]
+      wheelSegment: ['1', '2', '5', '10', '20', '40'][Math.floor(Math.random() * 6)]
     }),
     megaBall: () => ({
       roundId: `MB-${Date.now()}`,
       timestamp: new Date().toISOString(),
-      numbersDrawn: Array.from({length: 5}, () => Math.floor(Math.random() * 50) + 1),
+      numbersDrawn: Array.from({ length: 5 }, () => Math.floor(Math.random() * 50) + 1),
       megaBall: Math.floor(Math.random() * 25) + 1,
-      multiplier: [1, 2, 3, 5, 10][Math.floor(Math.random() * 5])
+      multiplier: [1, 2, 3, 5, 10][Math.floor(Math.random() * 5)]
     }),
     lightningDice: () => ({
       roundId: `LD-${Date.now()}`,
       timestamp: new Date().toISOString(),
-      diceResults: Array.from({length: 3}, () => Math.floor(Math.random() * 6) + 1),
+      diceResults: Array.from({ length: 3 }, () => Math.floor(Math.random() * 6) + 1),
       lightningMultiplier: [10, 25, 50, 100, 200][Math.floor(Math.random() * 5)]
     }),
     coinRush: () => ({
       roundId: `CR-${Date.now()}`,
       timestamp: new Date().toISOString(),
-      result: ['coin','coin','coin','bonus','jackpot'][Math.floor(Math.random() * 5)],
+      result: ['coin', 'coin', 'coin', 'bonus', 'jackpot'][Math.floor(Math.random() * 5)],
       value: Math.floor(Math.random() * 100) + 1
     })
   };
@@ -98,7 +100,7 @@ function broadcastNewResult(gameName, result) {
 
 function startMockGenerators() {
   const gameNames = Object.keys(gameCache);
-  gameNames.forEach((name, index) => {
+  gameNames.forEach((name) => {
     setInterval(() => {
       const result = generateMockResult(name);
       broadcastNewResult(name, result);
