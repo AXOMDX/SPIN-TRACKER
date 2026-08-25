@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: spintracker-backend
+    env: node
+    buildCommand: cd backend && npm install
+    startCommand: cd backend && npm start
+    plan: free
+
+  - type: web
+    name: spintracker-frontend
+    env: node
+    buildCommand: cd frontend && npm install && npm run build
+    startCommand: cd frontend && npm run preview
+    plan: free
