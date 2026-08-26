@@ -9,5 +9,8 @@ export default defineConfig({
       '/api': 'http://localhost:3000',
       '/socket.io': 'http://localhost:3000'
     }
+  },
+  preview: {
+    allowedHosts: ['spintracker-frontend.onrender.com']
   }
 });
