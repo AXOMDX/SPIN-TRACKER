@@ -13,7 +13,9 @@ const io = new Server(server, {
 
 app.use(cors());
 app.use(express.json());
-
+app.get('/', (req, res) => {
+  res.send('Spintracker Backend is running!');
+});
 const gameCache = {
   crazyTime: { results: [], lastUpdate: null },
   bigBaller: { results: [], lastUpdate: null },
