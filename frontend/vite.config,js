@@ -5,12 +5,20 @@ export default defineConfig({
   plugins: [react()],
   server: {
     port: 5173,
+    host: true,
     proxy: {
       '/api': 'http://localhost:3000',
       '/socket.io': 'http://localhost:3000'
     }
   },
   preview: {
-    allowedHosts: ['spintracker-frontend.onrender.com']
+    host: true,
+    port: 4173,
+    allowedHosts: [
+      'spintracker-frontend.onrender.com',
+      '.onrender.com',
+      'localhost',
+      '127.0.0.1'
+    ]
   }
 });
